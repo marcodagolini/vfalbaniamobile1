@@ -142,7 +142,6 @@
 
 
 	var isClicked = false;
-	var isMobile = false;
 	
 	
       function adjust(data, eventInfo) {
@@ -167,6 +166,14 @@
       }
 
       function offeredOrNot() {
+	      
+	      var isMacLike = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
+	      var isIOS = /(iPhone|iPod|iPad)/i.test(navigator.platform);
+	      if (!(isMacLike || isIOS)) {
+		      if(!isClicked){
+			      console.log("not clicked");
+		      }
+	      }
 	      
 	      
 	      if(window.innerWidth > 1025){
@@ -251,6 +258,19 @@
         func: offeredOrNot,
         triggerOnce: false,
       });
+	
+	
+	function clickedOrNot(){
+		isClicked = true;
+	}
+	
+      lpTag.events.bind({
+        eventName: "OFFER_CLICK",
+        appName: "LP_OFFERS",
+        func: clickedOrNot,
+        triggerOnce: true,
+      });
+
 
       function sendLocation() {
         setTimeout(function () {
