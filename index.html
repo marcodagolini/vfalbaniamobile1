@@ -172,9 +172,7 @@
 
       function offeredOrNot() {
 	      
-	      var isMacLike = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
-	      var isIOS = /(iPhone|iPod|iPad)/i.test(navigator.platform);
-	      if (!(isMacLike || isIOS)) {
+	      if (!window["mobileCheck"]()) {
 		      if(!isClicked){
 			      console.log("not clicked");
 		      }
