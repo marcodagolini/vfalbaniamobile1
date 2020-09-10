@@ -586,6 +586,7 @@
               typeof mutation.target.className === "string" &&
               mutation.target.className.indexOf("lp-window-root") > -1
             ) {
+		    console.log("here we go!");
               var myLoader = document.getElementsByClassName("lp_top-text");
               var myLoaderLength = myLoader.length;
               for (var a = 0; a < myLoaderLength; a++) {
