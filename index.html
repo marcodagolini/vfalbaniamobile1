@@ -158,7 +158,19 @@
 	      if(!isMobileCheck){
 		      if (!window["mobileCheck"]()) {
 			      if(!isClicked){
-				      jQuery(".lp_minimize").click();
+				      
+				      var refreshIntervalMinimize;
+				      refreshIntervalMinimize = setInterval(function () {
+					      if(jQuery(".lp_minimize").length > 0){
+						      clearInterval(refreshIntervalMinimize);
+						      jQuery(".lp_minimize").click();
+					      }   
+				      }, 100);
+				      
+				      
+				      
+				      
+				      
 			      }
 		      }
 	      }
