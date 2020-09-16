@@ -271,6 +271,20 @@
         });
       }
 	
+	function clickedOrNot(){
+		isClicked = true;
+	}
+	
+	
+	function letsClickChip(data, eventInfo){
+		console.log("data --> " + JSON.stringify(data));
+		console.log("eventInfo --> " + JSON.stringify(eventInfo));
+		
+		setTimeout(function(){
+			$(".chips-item").trigger('click');
+		}, 1000);
+	}
+	
 
       lpTag.events.bind({
         eventName: "state",
@@ -288,9 +302,7 @@
       });
 	
 	
-	function clickedOrNot(){
-		isClicked = true;
-	}
+	
 	
       lpTag.events.bind({
         eventName: "OFFER_CLICK",
@@ -298,6 +310,13 @@
         func: clickedOrNot,
         triggerOnce: true,
       });
+	
+	lpTag.events.bind({
+		eventName : "REQUEST_COMPLETE",
+		appName : "lp_monitoringSDK",
+		func: letsClickChip,
+		triggerOnce : false
+	});
 
 
       function sendLocation() {
