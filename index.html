@@ -142,6 +142,7 @@
 
 
 	var isClicked = false;
+	var isChipClicked = false
 	var isMobileCheck = false;
 	
 	window.mobileCheck = function() {
@@ -277,12 +278,16 @@
 	
 	
 	function letsClickChip(data, eventInfo){
-		console.log("data --> " + JSON.stringify(data));
-		console.log("eventInfo --> " + JSON.stringify(eventInfo));
+		if(!isChipClicked){
+			console.log("data --> " + JSON.stringify(data));
+			console.log("eventInfo --> " + JSON.stringify(eventInfo));
+			
+			setTimeout(function(){
+				$(".chips-item").trigger('click');
+			}, 1000);
+			isChipClicked = true;
+		}
 		
-		setTimeout(function(){
-			$(".chips-item").trigger('click');
-		}, 1000);
 	}
 	
 
