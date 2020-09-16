@@ -289,6 +289,13 @@
 					clearInterval(refreshIntervalTextBox);
 					$(".chips-item").trigger('click');
 					isChipClicked = true;
+					var refreshInterval;
+					refreshInterval = setInterval(function () {
+						if (jQuery("#lp_line_1").length > 0) {
+							jQuery("#lp_line_1").hide();
+							clearInterval(refreshInterval);
+						}
+					}, 100);	
 				}
 				myCounter = myCounter + 100;
 				if(myCounter > 5000){
