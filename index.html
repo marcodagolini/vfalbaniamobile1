@@ -279,13 +279,22 @@
 	
 	function letsClickChip(data, eventInfo){
 		if(!isChipClicked){
-			console.log("data --> " + JSON.stringify(data));
-			console.log("eventInfo --> " + JSON.stringify(eventInfo));
-			
-			setTimeout(function(){
-				$(".chips-item").trigger('click');
-			}, 1000);
-			isChipClicked = true;
+
+			var refreshIntervalTextBox;
+			var myCounter = 0;
+			refreshIntervalTextBox = setInterval(function () {
+				if (jQuery(".chips-item").length > 0) {
+					clearInterval(refreshIntervalTextBox);
+					$(".chips-item").trigger('click');
+					isChipClicked = true;
+				}
+				myCounter = myCounter + 100;
+				if(myCounter > 5000){
+					clearInterval(refreshIntervalTextBox);
+					console.log("loop deleted");
+				}
+			}, 100);
+
 		}
 		
 	}
